@@ -17,18 +17,21 @@ require("./src/common/utils/cronjob");
 // Untuk aplikasi Express
 const app = express();
 
+app.use(bodyParser.json());
+app.use((req, res, next) => {
+  console.log("Request dari origin:", req.headers.origin);
+  next();
+})
+
 // Middleware
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "https://sania220107.github.io",
-    ],
+    origin: "https://sania220107.github.io",
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // jika kamu mengirim cookie/token, aktifkan ini
   })
 );
 
-app.options("*", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
