@@ -25,6 +25,9 @@ app.use(
   })
 );
 
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }));
+
 // Rute
 app.use("/users", userRouter);
 app.use("/auth", authRouter);
