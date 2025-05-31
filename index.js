@@ -26,9 +26,10 @@ app.use((req, res, next) => {
 // Middleware
 app.use(
   cors({
-    origin: "https://sania220107.github.io",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // jika kamu mengirim cookie/token, aktifkan ini
+    origin: "https://sania220107.github.io", // Asal domain yang diizinkan
+    methods: ["GET", "POST", "PUT", "DELETE"], // Metode HTTP yang diizinkan
+    allowedHeaders: ["Content-Type", "Authorization"], // Header yang diizinkan
+    credentials: true, // Jika kamu ingin mengirim cookie/authorization header
   })
 );
 
