@@ -2,17 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 require("dotenv").config();
-require("@babel/register") ({
+require("@babel/register")({
   extensions: [".js", ".jsx"],
-})
+});
 const sequelize = require("./src/config/databaseConfig");
 const userRouter = require("./src/controller/userController");
 const authRouter = require("./src/controller/authController");
-const albumRouter = require("./src/controller/AlbumController")
-const fotoRouter = require("./src/controller/fotoController")
-const komentarRouter = require("./src/controller/komentarController")
-const likeRouter = require("./src/controller/likeController")
-require("./src/common/utils/cronjob")
+const albumRouter = require("./src/controller/AlbumController");
+const fotoRouter = require("./src/controller/fotoController");
+const komentarRouter = require("./src/controller/komentarController");
+const likeRouter = require("./src/controller/likeController");
+require("./src/common/utils/cronjob");
 
 // Untuk aplikasi Express
 const app = express();
@@ -20,12 +20,15 @@ const app = express();
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:5173", "https://Sania220107.github.io"],
+    origin: [
+      "http://localhost:5173",
+      "https://Sania220107.github.io/web-gallery",
+    ],
     credentials: true, // jika kamu mengirim cookie/token, aktifkan ini
   })
 );
 
-app.use(express.json())
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rute
@@ -34,7 +37,7 @@ app.use("/auth", authRouter);
 app.use("/album", albumRouter);
 app.use("/foto", fotoRouter);
 app.use("/komentar", komentarRouter);
-app.use("/like", likeRouter)
+app.use("/like", likeRouter);
 
 //url gambar
 app.use("/uploads", express.static("uploads"));
@@ -57,5 +60,5 @@ sequelize
     });
   })
   .catch((err) => {
-    console.error("Gagal menyinkronkan database:", err);
-  });
+    console.error("Gagal menyinkronkan database:", err);
+  });
