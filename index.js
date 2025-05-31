@@ -22,7 +22,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://Sania220107.github.io/web-gallery",
+      "https://sania220107.github.io/web-gallery",
     ],
     credentials: true, // jika kamu mengirim cookie/token, aktifkan ini
   })
