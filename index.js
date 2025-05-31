@@ -22,11 +22,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://sania220107.github.io/web-gallery",
+      "https://sania220107.github.io",
     ],
     credentials: true, // jika kamu mengirim cookie/token, aktifkan ini
   })
 );
+
+app.options("*", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
