@@ -18,10 +18,12 @@ require("./src/common/utils/cronjob")
 const app = express();
 
 // Middleware
-app.use(cors({
-  origin: "http://localhost:5173"
-}));
-app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "https://Sania220107.github.io"],
+    credentials: true, // jika kamu mengirim cookie/token, aktifkan ini
+  })
+);
 
 // Rute
 app.use("/users", userRouter);
